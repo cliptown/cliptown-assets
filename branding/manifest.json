@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "cliptown_app_logo",
+      "source": "branding/app-logo.png",
+      "media_type": "image/png",
+      "role": "application_branding"
+    }
+  ]
+}

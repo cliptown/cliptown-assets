@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClipTown brand asset manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "assets"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "source",
+          "media_type",
+          "role"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "source": {
+            "type": "string",
+            "pattern": "^branding/(?!\\.\\.(?:/|$))(?!.*\\/\\.\\.(?:/|$))(?!.*\\/\\/)[A-Za-z0-9._/-]+$",
+            "maxLength": 256
+          },
+          "media_type": {
+            "type": "string",
+            "enum": [
+              "image/png",
+              "image/svg+xml",
+              "image/jpeg"
+            ]
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "application_branding",
+              "marketing_branding",
+              "documentation"
+            ]
+          }
+        }
+      },
+      "maxItems": 64,
+      "uniqueItems": true
+    }
+  }
+}

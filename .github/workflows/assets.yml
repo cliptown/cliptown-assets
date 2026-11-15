@@ -18,5 +18,7 @@ jobs:
       - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
         with:
           node-version: '22'
-      - run: node --test test/assets.test.mjs
+      - run: node --test test/*.test.mjs
+      - name: Verify deterministic local asset receipts
+        run: node scripts/asset-receipts.mjs > "$RUNNER_TEMP/cliptown-asset-receipts.json"
       - run: node scripts/verify-assets.mjs
